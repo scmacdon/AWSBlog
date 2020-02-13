@@ -4,15 +4,15 @@ You can develop a fully functioning blog application by using AWS Services (Dyna
 
 The following illustration shows the application that is developed by following this document.
 
-![AWS Blog Application](pic1.png)
+![AWS Blog Application](images/pic1.png)
 
 This application also displays the five most recent posts. When a user clicks on a post, its details are retrieved and displayed, as shown in this illustration.
 
-
+![AWS Blog Application](images/pic2.png)
 
 In addition, new posts can be created by clicking the Create Post menu option. When the post is submitted to a Spring controller, the data is persisted into a DynamoDB table named Blogs.
 
-
+![AWS Blog Application](images/pic3.png)
 
 This development document guides you through creating an AWS application that uses Spring Boot. Once the application is developed, this document teaches you how to deploy it to the AWS Elastic Beanstalk.
 
