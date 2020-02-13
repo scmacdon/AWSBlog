@@ -18,9 +18,10 @@ This development document guides you through creating an AWS application that us
 
 To follow along with the document, you require the following:
 
-An AWS Account.
-A Java IDE (for this example, IntelliJ is used).
-Java 1.8 SDK and Maven.
++ An AWS Account.
++ A Java IDE (for this example, IntelliJ is used).
++ Java 1.8 SDK and Maven.
+
 The following illustration shows the project that is created.
 
 
