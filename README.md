@@ -28,7 +28,7 @@ The following illustration shows the project that is created.
 
 **Note**: Please be sure to terminate all of the resources created during this document to ensure that you are no longer charged.
 
-## Create an IntelliJ Project named AWS Blog
+## Create an IntelliJ Project named AWSBlog
 The following example generates a presigned URL that you can give to others so that they can retrieve an object from an S3 bucket.
 
 // Create an S3Presigner using the default region and credentials.
