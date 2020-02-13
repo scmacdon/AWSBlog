@@ -24,7 +24,7 @@ To follow along with the document, you require the following:
 
 The following illustration shows the project that is created.
 
-
+*Cost to Complete*: The AWS Services included in this document are included in the AWS Free Tier.
 
 ## Create an IntelliJ Project named AWS Blog
 The following example generates a presigned URL that you can give to others so that they can retrieve an object from an S3 bucket.
