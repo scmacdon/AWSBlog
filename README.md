@@ -4,7 +4,7 @@ You can develop a fully functioning blog application by using AWS Services (Dyna
 
 The following illustration shows the application that is developed by following this document.
 
-
+![AWS Blog Application](pic1.png)
 
 This application also displays the five most recent posts. When a user clicks on a post, its details are retrieved and displayed, as shown in this illustration.
 
