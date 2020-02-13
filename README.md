@@ -1,4 +1,5 @@
-Creating an AWS Blog Application using Spring Boot and DynamoDB
+# Creating an AWS Blog Application using Spring Boot and DynamoDB
+
 You can develop a fully functioning blog application by using AWS Services (DynamoDB and Elastic Beanstalk) and Spring Boot. This application uses AWS Java APIs to insert and retrieve data from a DynamoDB table and then Spring Boot APIs to build a model, view and controllers. To query data from the DynamoDB table, you use a com.amazonaws.services.dynamodbv2.AmazonDynamoDB instance that belongs to the DynamoDB Java API. This API supports both inserting and querying operations.
 
 The following illustration shows the application that is developed by following this document.
@@ -24,7 +25,7 @@ The following illustration shows the project that is created.
 
 
 
-Create an IntelliJ Project named AWS Blog
+## Create an IntelliJ Project named AWS Blog
 The following example generates a presigned URL that you can give to others so that they can retrieve an object from an S3 bucket.
 
 // Create an S3Presigner using the default region and credentials.
