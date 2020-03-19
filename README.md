@@ -196,7 +196,7 @@ At this point, the **pom.xml** file resembles the following file.
 
 Create a Java package in the **main/java** folder named **com.example**. 
 
-![AWS Tracking Application](images/track6.png)
+![AWS Tracking Application](images/greet5.png)
 
 The Java files go into these subpackages:
 
