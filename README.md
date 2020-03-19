@@ -10,9 +10,9 @@ The following illustration shows the application that is developed by following 
 
 ![AWS Blog Application](images/greet1.png)
 
-This application also displays the five most recent posts. When a user clicks on a post, its details are retrieved and displayed, as shown in this illustration.
+WHen the **Submit** button is clicked, the data is submitted to a Spring Controller and persisted into a DynamoDB table named **Greeting**. The following illustration shows this table. 
 
-![AWS Blog Application](images/pic2.png)
+![AWS Blog Application](images/greet2.png)
 
 In addition, new posts can be created by clicking the Create Post menu option. When the post is submitted to a Spring controller, the data is persisted into a DynamoDB table named Blogs.
 
