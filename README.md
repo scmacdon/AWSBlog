@@ -262,7 +262,7 @@ In the **com.example.handlingformsubmission** package, create the **GreetingCont
     	 }
 	}
 	
-### Create the Greeting clas
+### Create the Greeting class
 
 In the **com.example.handlingformsubmission** package, create the **Greeting** class. This class functions as the model for the Spring Boot application. The following Java code represents this class.  
 
@@ -308,7 +308,7 @@ In the **com.example.handlingformsubmission** package, create the **Greeting** c
     	}
        }
 	
-### Create the DynamoDBEnhanced clas
+### Create the DynamoDBEnhanced class
 
 In the **com.example.handlingformsubmission** package, create the **DynamoDBEnhanced** class. This class uses the DynamoDB API that injects data into a DynamoDB table by using the Enhanced client. To map data to the table, you can use a **TableSchema** object (as shown in the following example.) In this example, notice that **GreetingItems** class. Each data member in this class is mapped to a column in a DynamoDB table. The following Java code represents the **DynamoDBEnhanced** class.
 
