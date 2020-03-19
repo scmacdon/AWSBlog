@@ -44,55 +44,14 @@ This document contains the following sections:
 + Deploy the  **Greetings** application to the AWS Elastic Beanstalk
 
 
-## Create an IntelliJ Project named AWSBlog
-The following example generates a presigned URL that you can give to others so that they can retrieve an object from an S3 bucket.
+## Create an IntelliJ project named Greetings
 
-// Create an S3Presigner using the default region and credentials.
+**Create a new IntelliJ project named Greetings**
 
- // This is usually done at application startup, because creating a presigner can be expensive.
-
- S3Presigner presigner = S3Presigner.create();
-
- // Create a GetObjectRequest to be pre-signed
-
- GetObjectRequest getObjectRequest =
-
-         GetObjectRequest.builder()
-
-                         .bucket(&quot;my-bucket&quot;)
-
-                         .key(&quot;my-key&quot;)
-
-                         .build();
-
- // Create a GetObjectPresignRequest to specify the signature duration
-
- GetObjectPresignRequest getObjectPresignRequest =
-
-     GetObjectPresignRequest.builder()
-
-                            .signatureDuration(Duration.ofMinutes(10))
-
-                            .getObjectRequest(request)
-
-                            .build();
-
- // Generate the presigned request
-
- PresignedGetObjectRequest presignedGetObjectRequest =
-
-     presigner.presignGetObject(getObjectPresignRequest);
-
- // Log the presigned URL, for example.
-
- System.out.println(&quot;Presigned URL: &quot; + presignedGetObjectRequest.url());
-
- // It is recommended to close the S3Presigner when it is done being used, because some credential
-
- // providers (e.g. if your AWS profile is configured to assume an STS role) require system resources
-
- // that need to be freed. If you are using one S3Presigner per application (as recommended), this
-
- // usually is not needed.
-
- presigner.close();
+1. From within the IntelliJ IDE, click **File**, **New**, **Project**. 
+2. In the **New Project** dialog, select **Maven**. 
+3. Click **Next**.
+4. In the **GroupId** field, enter **spring-aws**. 
+5. In the **ArtifactId** field, enter **Greetings**. 
+6. Click **Next**.
+7. Click **Finish**. 
