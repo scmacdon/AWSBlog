@@ -194,16 +194,14 @@ At this point, the **pom.xml** file resembles the following file.
     
 ## Setup the Java packages in your project
 
-Create a Java package in the **main/java** folder named **com.example**. 
-
-![AWS Tracking Application](images/greet5.png)
-
-The Java files go into this subpackage:
+Create a Java package in the **main/java** folder named **com.example.handlingformsubmission**. The Java files go into this package.
 
 ![AWS Tracking Application](images/greet6.png)
 
 The following list describes the Java files in this packages:
 
-+ **DynamoDBEnhanced** - contains Java files that represent the model. In this example, the model class is named **WorkItem**. 
-+ **Greeting** - contains Java files that use the JDBC API to interact with the RDS database.
-+ **GreetingController** - contains Java files that invoke AWS Services. 
++ **DynamoDBEnhanced** - contains Java application logic that injects data into a Amazon DynamoDB table using the Enchanced Client. 
++ **Greeting** - A Java class that container setter and getter methods and represents the model for the application.
++ **GreetingController** - A Java class that repeesents the controller for this application. 
+
+**Note**: The **GreetingApplication** class must be placed into the **com.example** package. 
