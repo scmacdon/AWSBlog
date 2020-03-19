@@ -198,13 +198,12 @@ Create a Java package in the **main/java** folder named **com.example**.
 
 ![AWS Tracking Application](images/greet5.png)
 
-The Java files go into these subpackages:
+The Java files go into this subpackage:
 
-![AWS Tracking Application](images/newtrack7_1.png)
+![AWS Tracking Application](images/greet6.png)
 
-The following list describes these packages:
+The following list describes the Java files in this packages:
 
-+ **entities** - contains Java files that represent the model. In this example, the model class is named **WorkItem**. 
-+ **jdbc** - contains Java files that use the JDBC API to interact with the RDS database.
-+ **services** - contains Java files that invoke AWS Services. For example, the  **com.amazonaws.services.simpleemail.AmazonSimpleEmailService** is used within a Java file to send email messages.
-+ **securingweb** - contains all of the Java files required for Spring Security. 
++ **DynamoDBEnhanced** - contains Java files that represent the model. In this example, the model class is named **WorkItem**. 
++ **Greeting** - contains Java files that use the JDBC API to interact with the RDS database.
++ **GreetingController** - contains Java files that invoke AWS Services. 
