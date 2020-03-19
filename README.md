@@ -23,6 +23,7 @@ To follow along with the document, you require the following:
 + Java 1.8 SDK and Maven.
 
 The following illustration shows the project that is created.
+![AWS Blog Application](images/greet3.png)
 
 **Cost to Complete**: The AWS Services included in this document are included in the AWS Free Tier.
 
