@@ -226,3 +226,208 @@ In the **com.example** package, create a new Java class named **GreetingApplicat
         	SpringApplication.run(GreetingApplication.class, args);
     	 }
 	}
+
+### Create the GreetingController class
+
+In the **com.example.handlingformsubmission** package, create the **GreetingController** class. This class functions as the controller for the Spring Boot application. That is, it handles HTTP requests and returns a view. In this example, notice the **@Autowired** annotation. This creates a managed Spring bean. The following Java code represents this class. 
+
+	package com.example.handlingformsubmission;
+
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.stereotype.Controller;
+	import org.springframework.ui.Model;
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.ModelAttribute;
+	import org.springframework.web.bind.annotation.PostMapping;
+
+    	@Controller
+    	public class GreetingController {
+
+    	@Autowired
+    	private DynamoDBEnhanced dde;
+
+    	@GetMapping("/greeting")
+    	public String greetingForm(Model model) {
+         model.addAttribute("greeting", new Greeting());
+         return "greeting";
+    	}
+
+    	@PostMapping("/greeting")
+    	public String greetingSubmit(@ModelAttribute Greeting greeting) {
+
+        //Persist Greeting into a DynamoDB table using the Enhanced Client
+        dde.injectDynamoItem(greeting);
+
+        return "result";
+    	 }
+	}
+	
+### Create the Greeting clas
+
+In the **com.example.handlingformsubmission** package, create the **Greeting** class. This class functions as the model for the Spring Boot application. The following Java code represents this class.  
+
+	package com.example.handlingformsubmission;
+
+	public class Greeting {
+	
+	private String id;
+    	private String body;
+    	private String name;
+    	private String title;
+
+    	public String getTitle() {
+        	return this.title;
+    	}
+
+    	public void setTitle(String title) {
+        	this.title = title;
+    	}
+
+    	public String getName() {
+        	return this.name;
+    	}
+
+    	public void setName(String name) {
+        	this.name = name;
+    	}
+
+    	public String getId() {
+        	return id;
+    	}
+
+    	public void setId(String id) {
+        	this.id = id;
+    	}
+
+    	public String getBody() {
+        	return this.body;
+    	}
+
+    	public void setBody(String body) {
+        	this.body = body;
+    	}
+       }
+	
+### Create the DynamoDBEnhanced clas
+
+In the **com.example.handlingformsubmission** package, create the **DynamoDBEnhanced** class. This class uses the DynamoDB API that injects data into a DynamoDB table by using the Enhanced client. To map data to the table, you can use a **TableSchema** object (as shown in the following example.) In this example, notice that **GreetingItems** class. Each data member in this class is mapped to a column in a DynamoDB table. The following Java code represents the **DynamoDBEnhanced** class.
+
+	package com.example.handlingformsubmission;
+
+	import static software.amazon.awssdk.enhanced.dynamodb.mapper.StaticAttributeTags.primaryPartitionKey;
+	import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
+	import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
+	import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+	import software.amazon.awssdk.enhanced.dynamodb.mapper.StaticTableSchema;
+
+	import software.amazon.awssdk.enhanced.dynamodb.model.PutItemEnhancedRequest;
+	import software.amazon.awssdk.regions.Region;
+	import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+	import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput;
+	import org.springframework.stereotype.Component;
+
+	@Component("DynamoDBEnhanced")
+	public class DynamoDBEnhanced {
+
+    	private final ProvisionedThroughput DEFAULT_PROVISIONED_THROUGHPUT =
+            ProvisionedThroughput.builder()
+                    .readCapacityUnits(50L)
+                    .writeCapacityUnits(50L)
+                    .build();
+
+    	private final TableSchema<GreetingItems> TABLE_SCHEMA =
+            StaticTableSchema.builder(GreetingItems.class)
+                    .newItemSupplier(GreetingItems::new)
+                    .addAttribute(String.class, a -> a.name("idblog")
+                            .getter(GreetingItems::getId)
+                            .setter(GreetingItems::setId)
+                            .tags(primaryPartitionKey()))
+                    .addAttribute(String.class, a -> a.name("author")
+                            .getter(GreetingItems::getName)
+                            .setter(GreetingItems::setName))
+                    .addAttribute(String.class, a -> a.name("title")
+                            .getter(GreetingItems::getTitle)
+                            .setter(GreetingItems::setTitle))
+                    .addAttribute(String.class, a -> a.name("body")
+                            .getter(GreetingItems::getMessage)
+                            .setter(GreetingItems::setMessage))
+                    .build();
+
+    	// Uses the Enhanced Client to inject a new post into a DynamoDB table
+    	public void injectDynamoItem(Greeting item){
+
+        Region region = Region.US_EAST_1;
+        DynamoDbClient ddb = DynamoDbClient.builder()
+                .region(region)
+                .build();
+
+        try {
+
+            DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.builder()
+                    .dynamoDbClient(ddb)
+                    .build();
+
+            //Create a DynamoDbTable object
+            DynamoDbTable<GreetingItems> mappedTable = enhancedClient.table("Greeting", TABLE_SCHEMA);
+            GreetingItems gi = new GreetingItems();
+            gi.setName(item.getName());
+            gi.setMessage(item.getBody());
+            gi.setTitle(item.getTitle());
+            gi.setId(item.getId());
+
+            PutItemEnhancedRequest enReq = PutItemEnhancedRequest.builder(GreetingItems.class)
+                    .item(gi)
+                    .build();
+
+            mappedTable.putItem(enReq);
+
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    	}
+
+	 public class GreetingItems {
+
+        //Set up Data Members that correspond to columns in the Work table
+        private String id;
+        private String name;
+        private String message;
+        private String title;
+
+        public GreetingItems()
+        {
+        }
+
+        public String getId() {
+            return this.id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getMessage(){
+            return this.message;
+        }
+
+        public void setMessage(String message){
+            this.message = message;
+        }
+
+        public String getTitle() {
+            return this.title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+	       }
+	   }
+	}	
