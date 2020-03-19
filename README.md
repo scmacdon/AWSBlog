@@ -14,10 +14,6 @@ WHen the **Submit** button is clicked, the data is submitted to a Spring Control
 
 ![AWS Blog Application](images/greet2_1.png)
 
-In addition, new posts can be created by clicking the Create Post menu option. When the post is submitted to a Spring controller, the data is persisted into a DynamoDB table named Blogs.
-
-![AWS Blog Application](images/pic3.png)
-
 This development document guides you through creating an AWS application that uses Spring Boot. Once the application is developed, this document teaches you how to deploy it to the AWS Elastic Beanstalk.
 
 To follow along with the document, you require the following:
