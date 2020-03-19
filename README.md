@@ -12,7 +12,7 @@ The following illustration shows the application that is developed by following 
 
 WHen the **Submit** button is clicked, the data is submitted to a Spring Controller and persisted into a DynamoDB table named **Greeting**. The following illustration shows this table. 
 
-![AWS Blog Application](images/greet2.png)
+![AWS Blog Application](images/greet2_1.png)
 
 In addition, new posts can be created by clicking the Create Post menu option. When the post is submitted to a Spring controller, the data is persisted into a DynamoDB table named Blogs.
 
