@@ -4,7 +4,7 @@ You can develop a fully functioning data submission application by using AWS Ser
 
 The DynamoDB Enhanced client lets you map your client-side classes to Amazon DynamoDB tables. To use DynamoDB Enhanced Client, you define the relationship between items in a DynamoDB table and their corresponding object instances in your code. The DynamoDB Enhanced Client class enables you to access your tables; perform various create, read, update, and delete (CRUD) operations; and execute queries.
 
-Note: For more information about the DynamoDB Enhanced client, see <X-REF TO Java 2 DEV Guide>. 
+**Note**: For more information about the DynamoDB Enhanced client, see <X-REF TO Java 2 DEV Guide>. 
 
 The following illustration shows the application that is developed by following this document.
 
@@ -27,6 +27,21 @@ The following illustration shows the project that is created.
 **Cost to Complete**: The AWS Services included in this document are included in the AWS Free Tier.
 
 **Note**: Please be sure to terminate all of the resources created during this document to ensure that you are no longer charged.
+
+This document contains the following sections: 
+
++ Create an IntelliJ project named **Greetings**
++ Add the Spring POM dependencies to your project	
++ Setup the Java packages in your project
++ Create the Java logic for the main Boot class
++ Create the main controller class
++ Create the Greeting class
++ Create the Service class
++ Create the HTML files
++ Create a JAR file for the **Greetings** application 
++ Setup the DynamoDB table 
++ Deploy the  **Greetings** application to the AWS Elastic Beanstalk
+
 
 ## Create an IntelliJ Project named AWSBlog
 The following example generates a presigned URL that you can give to others so that they can retrieve an object from an S3 bucket.
