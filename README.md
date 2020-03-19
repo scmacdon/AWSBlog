@@ -198,10 +198,31 @@ Create a Java package in the **main/java** folder named **com.example.handlingfo
 
 ![AWS Tracking Application](images/greet6.png)
 
-The following list describes the Java files in this packages:
+The following list describes the Java files in this package.
 
 + **DynamoDBEnhanced** - contains Java application logic that injects data into a Amazon DynamoDB table using the Enchanced Client. 
 + **Greeting** - A Java class that container setter and getter methods and represents the model for the application.
 + **GreetingController** - A Java class that repeesents the controller for this application. 
 
 **Note**: The **GreetingApplication** class must be placed into the **com.example** package. 
+
+## Create the Java logic for the application
+
+Create Spring application logic that is required for this application to persist data into an Amazon DynamoDB table. You need to create the main Spring Boot Java class, the Controller class, the model class, and the DynamoDB service class. 
+
+### Create the main Spring Boot Java class
+
+In the **com.example** package, create a new Java class named **GreetingApplication**. Add the following Java code to this class. 
+
+	package com.example;
+
+	import org.springframework.boot.SpringApplication;
+	import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+	@SpringBootApplication
+	public class GreetingApplication {
+
+    	public static void main(String[] args) {
+        	SpringApplication.run(GreetingApplication.class, args);
+    	 }
+	}
