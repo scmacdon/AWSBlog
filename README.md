@@ -8,7 +8,7 @@ Note: For more information about the DynamoDB Enhanced client, see <X-REF TO Jav
 
 The following illustration shows the application that is developed by following this document.
 
-![AWS Blog Application](images/pic1.png)
+![AWS Blog Application](images/greet1.png)
 
 This application also displays the five most recent posts. When a user clicks on a post, its details are retrieved and displayed, as shown in this illustration.
 
