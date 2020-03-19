@@ -1,8 +1,10 @@
-# Creating an AWS Blog Application using Spring Boot and DynamoDB
+# Submitting data to an Amazon DynamoDB table using the Enhanced Client within a Spring Boot application 
 
-You can develop a fully functioning blog application by using AWS Services (Amazon DynamoDB, Amazon S3, and AWS Elastic Beanstalk) and Spring Boot. This application uses AWS Java APIs to insert and retrieve data from a DynamoDB table and then Spring Boot APIs to build a model, view and controllers. To query data from the DynamoDB table, you use a <code>com.amazonaws.services.dynamodbv2.AmazonDynamoDB</code> instance that belongs to the DynamoDB Java API. This API supports both inserting and querying operations.
+You can develop a fully functioning data submission application by using AWS Services (Amazon DynamoDB and AWS Elastic Beanstalk) and Spring Boot. This application uses the DynamoDB Enhanced Client (**software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient**) s to submit data to a DynamoDB table. This application also uses Spring Boot APIs to build a model, view and controllers. 
 
-Note: For more information about Spring Boot, see https://spring.io/projects/spring-boot. 
+The DynamoDB Enhanced client lets you map your client-side classes to Amazon DynamoDB tables. To use DynamoDB Enhanced Client, you define the relationship between items in a DynamoDB table and their corresponding object instances in your code. The DynamoDB Enhanced Client class enables you to access your tables; perform various create, read, update, and delete (CRUD) operations; and execute queries.
+
+Note: For more information about the DynamoDB Enhanced client, see <X-REF TO Java 2 DEV Guide>. 
 
 The following illustration shows the application that is developed by following this document.
 
