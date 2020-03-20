@@ -554,6 +554,16 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 + **Application Name** - Greeting
 + **Description** - A description for the application. 
 
+![AWS Tracking Application](images/greet10.png)
+
+4. Click the **Create one now** link.
+5. Select the **Web server environment** option and click **Select**.
+6. In the Preconfigured platform option, select **Java**. 
+7. In the **Upload your code** section, browse to the JAR that you created. 
+8. Click **Create Environment**. You will see the application being created. 
+
+![AWS Tracking Application](images/greet11.png)
+
 3. To change the port that Spring Boot listens on, add a new environment variable, **SERVER_PORT**, with the value 5000.
 4. Add a new variable named **AWS_ACCESS_KEY_ID** and specify your access key value. 
 5. Add a  new variable named **AWS_SECRET_ACCESS_KEY** and specify your secret key value.
