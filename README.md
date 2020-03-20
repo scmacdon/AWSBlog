@@ -564,10 +564,26 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 
 ![AWS Tracking Application](images/greet11.png)
 
-9. Once done, you will see the application 
+9. Once done, you will see the application state the Health is Ok.  
 
 ![AWS Tracking Application](images/greet13.png)
 
-3. To change the port that Spring Boot listens on, add a new environment variable, **SERVER_PORT**, with the value 5000.
-4. Add a new variable named **AWS_ACCESS_KEY_ID** and specify your access key value. 
-5. Add a  new variable named **AWS_SECRET_ACCESS_KEY** and specify your secret key value.
+10. To change the port that Spring Boot listens on, add a new environment variable named **SERVER_PORT**, with the value 5000.
+11. Add a new variable named **AWS_ACCESS_KEY_ID** and specify your access key value. 
+12. Add a  new variable named **AWS_SECRET_ACCESS_KEY** and specify your secret key value.
+
+**NOTE**: If you do not know how to set variables, see https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-cfg-softwaresettings.html.
+
+13. Once the variables are configured, you will see the URL that application can be access at, as shown in this illustation. 
+
+![AWS Tracking Application](images/greet14.png)
+
+To access the application, you need to use the following syntax in your browser.
+
+<URL>/greeting
+
+You need /greet at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browswer, you see the Form. 
+
+![AWS Blog Application](images/greet1.png)
+
+
