@@ -564,6 +564,10 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 
 ![AWS Tracking Application](images/greet11.png)
 
+9. Once done, you will see the application 
+
+![AWS Tracking Application](images/greet13.png)
+
 3. To change the port that Spring Boot listens on, add a new environment variable, **SERVER_PORT**, with the value 5000.
 4. Add a new variable named **AWS_ACCESS_KEY_ID** and specify your access key value. 
 5. Add a  new variable named **AWS_SECRET_ACCESS_KEY** and specify your secret key value.
