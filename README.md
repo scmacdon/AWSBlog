@@ -540,11 +540,11 @@ Do not include the **CreateTable** class in this Spring project. You can setup a
 
 ## Deploy the application to the AWS Elastic Beanstalk
 
-Sign in to the AWS Management Console, and then open the Elastic Beanstalk console. An application is the top-level container in Elastic Beanstalk that contains one or more application environments (for example prod, qa, and dev or prod-web, prod-worker, qa-web, qa-worker).
+You can deploy the application to the AWS Elastic Beanstalk so it is available from a specified URL. Sign in to the AWS Management Console, and then open the Elastic Beanstalk console. An application is the top-level container in Elastic Beanstalk that contains one or more application environments (for example prod, qa, and dev or prod-web, prod-worker, qa-web, qa-worker).
 
 If this is your first time accessing this service, you will see a *Welcome to AWS Elastic Beanstalk* page. Otherwise, you’ll land on the Elastic Beanstalk dashboard, which lists all of your applications.
 
-![AWS Tracking Application](images/SpringBean.png)
+![AWS Tracking Application](images/greet9.png)
 
 To deploy the *AWS Tracker* application to the AWS Elastic Beanstalk:
 
@@ -555,4 +555,6 @@ To deploy the *AWS Tracker* application to the AWS Elastic Beanstalk:
 
 ![AWS Tracking Application](images/NewApp.png)
 
-NOTE - To change the port that Spring Boot listens on, add a new environment variable, SERVER_PORT, with the value 5000.
+3. To change the port that Spring Boot listens on, add a new environment variable, **SERVER_PORT**, with the value 5000.
+4. Add a new variable named **AWS_ACCESS_KEY_ID** and specify your access key value. 
+5. Add a  new variable named **AWS_SECRET_ACCESS_KEY** and specify your secret key value.
