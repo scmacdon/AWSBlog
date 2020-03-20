@@ -320,11 +320,11 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
 	package com.example.handlingformsubmission;
 
 	import static software.amazon.awssdk.enhanced.dynamodb.mapper.StaticAttributeTags.primaryPartitionKey;
+	import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 	import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 	import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 	import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 	import software.amazon.awssdk.enhanced.dynamodb.mapper.StaticTableSchema;
-
 	import software.amazon.awssdk.enhanced.dynamodb.model.PutItemEnhancedRequest;
 	import software.amazon.awssdk.regions.Region;
 	import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
@@ -362,8 +362,9 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
     	public void injectDynamoItem(Greeting item){
 
         Region region = Region.US_EAST_1;
-        DynamoDbClient ddb = DynamoDbClient.builder()
+         DynamoDbClient ddb = DynamoDbClient.builder()
                 .region(region)
+                .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
                 .build();
 
         try {
@@ -436,6 +437,8 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
 	       }
 	   }
 	}
+	
+**NOTE**: Notice that the **EnvironmentVariableCredentialsProvider** is used to create a **DynamoDbClient**. The reason is because this application is going to be deployed to the AWS Elastic Beanstalk. You can setup environment variables on the AWS Elastic Beanstalk so that the  **DynamoDbClient** is successfully created. 	
 	
 ## Create the HTML files
 
