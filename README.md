@@ -36,7 +36,7 @@ This document contains the following sections:
 + Setup the Java packages in your project
 + Create the Java logic for the main Boot class
 + Create the HTML files
-+ Create a JAR file for the **Greetings** application 
++ Package the **Greetings** application into a JAR file
 + Setup the DynamoDB table 
 + Deploy the  **Greetings** application to the AWS Elastic Beanstalk
 
@@ -522,5 +522,33 @@ You can package up the project into a JAR file that you can deploy to Amazon Ela
 
 	mvn package
 
-The JAR is located in the target folder. 
+The JAR is located in the target folder, as shown in the following illustration.
 
+![AWS Tracking Application](images/greet8.png)
+
+## Create the DynamoDB table named Greeting
+
+You can use the DynamoDB Java API to create a table. The code to create a table is listed at this URL.
+
+https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/dynamodb/src/main/java/com/example/dynamodb/CreateTable.java
+
+Do not include the **CreateTable** class in this Spring project. You can setup a separate Java project to run this code. Ensure that you name the table **Greeting** when you execute this Java code (this is referenced in the **DynamoDBEnhanced** class). 
+
+## Deploy the application to the AWS Elastic Beanstalk
+
+Sign in to the AWS Management Console, and then open the Elastic Beanstalk console. An application is the top-level container in Elastic Beanstalk that contains one or more application environments (for example prod, qa, and dev or prod-web, prod-worker, qa-web, qa-worker).
+
+If this is your first time accessing this service, you will see a *Welcome to AWS Elastic Beanstalk* page. Otherwise, you’ll land on the Elastic Beanstalk dashboard, which lists all of your applications.
+
+![AWS Tracking Application](images/SpringBean.png)
+
+To deploy the *AWS Tracker* application to the AWS Elastic Beanstalk:
+
+1. Choose **Create New Application**. This opens a wizard that creates your application and launches an appropriate environment.
+2. In the *Create New Application* dialog, enter the following values: 
++ **Application Name** - AWSItemTracker
++ **Description** - A description for the application. 
+
+![AWS Tracking Application](images/NewApp.png)
+
+NOTE - To change the port that Spring Boot listens on, add a new environment variable, SERVER_PORT, with the value 5000.
