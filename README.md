@@ -127,6 +127,7 @@ At this point, the **pom.xml** file resembles the following file.
     <groupId>spring-aws</groupId>
     <artifactId>Greetings</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -188,6 +189,8 @@ At this point, the **pom.xml** file resembles the following file.
         </plugins>
       </build>
     </project>
+ 
+**Note** - Make sure that you have the <packaging> element in your POM file. This is required to build a JAR file (which is covered later in this document).  
     
 ## Setup the Java packages in your project
 
@@ -513,5 +516,11 @@ The following HTML code represents the **result.html** file.
 2. In the **templates** folder, create the **greeting.html** file and paste the HTML code into this file. 
 3. In the **templates** folder, create the **result.html** file and paste the HTML code into this file.   
 
+## Create a JAR file for the Greetings application
 
+You can package up the project into a JAR file that you can deploy to Amazon Elastic Beanstalk. To package up the project, you can use the following Maven command.
+
+	mvn package
+
+The JAR is located in the target folder. 
 
