@@ -435,7 +435,7 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
 	
 ## Create the HTML files
 
-At this point, you have created all of the Java files required for the AWS *Greeting Application*. Under the resource folder, create a template folder and then create the following HTML files:
+At this point, you have created all of the Java files required for the AWS *Greeting Application*. Under the resource folder, create a **templates** folder and then create the following HTML files:
 
 + **greeting.html**
 + **result.html**
@@ -448,7 +448,7 @@ The **greeting.html** file is the form that lets a user submit data to the **Gre
 
 The **result.html** file is used as a view returned by the controller after the user submits the data. In this example, it simply displays the Id value and the message. By the time the view is displayed, the data is already persisted in the DynamoDB table. 
 
-#### greeting HTML file
+#### Greeting HTML file
 
 The following HTML code represents the **greeting.html** file. 
 
@@ -488,3 +488,28 @@ The following HTML code represents the **greeting.html** file.
 	</html>
 
 **Note** - Notice that the **th:field** values correspond to the data members in the **Greeting** class. 
+
+#### Result HTML file
+
+The following HTML code represents the **result.html** file. 
+
+	<!DOCTYPE HTML>
+	<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+    	 <title>Getting Started: Handling Form Submission</title>
+      	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 </head>
+	<body>
+	<h1>Result</h1>
+	<p th:text="'id: ' + ${greeting.id}" />
+	<p th:text="'content: ' + ${greeting.body}" />
+	<a href="/greeting">Submit another message</a>
+	</body>
+	</html>
+
+#### Create the HTML files 
+
+1. In the **resources** folder, create a new folder named **templates**. 
+2. In the **templates** folder, create the **greeting.html** file and paste the HTML code into this file. 
+3. In the **templates** folder, create the **result.html** file and paste the HTML code into this file.   
+
