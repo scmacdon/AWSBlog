@@ -546,14 +546,13 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 
 ![AWS Tracking Application](images/greet9.png)
 
-To deploy the *AWS Tracker* application to the AWS Elastic Beanstalk:
+**Deploy the Greeting application to the AWS Elastic Beanstalk**
 
-1. Choose **Create New Application**. This opens a wizard that creates your application and launches an appropriate environment.
-2. In the *Create New Application* dialog, enter the following values: 
-+ **Application Name** - AWSItemTracker
+1. Open the Elastic Beanstalk console at https://console.aws.amazon.com/elasticbeanstalk/home. 
+2. Choose **Create New Application**. This opens a wizard that creates your application and launches an appropriate environment.
+3. In the *Create New Application* dialog, enter the following values: 
++ **Application Name** - Greeting
 + **Description** - A description for the application. 
-
-![AWS Tracking Application](images/NewApp.png)
 
 3. To change the port that Spring Boot listens on, add a new environment variable, **SERVER_PORT**, with the value 5000.
 4. Add a new variable named **AWS_ACCESS_KEY_ID** and specify your access key value. 
