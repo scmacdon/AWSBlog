@@ -42,6 +42,7 @@ This document contains the following sections:
 
 
 ## Create an IntelliJ project named Greetings
+The first step is to create a new IntelliJ project. 
 
 **Create a new IntelliJ project named Greetings**
 
