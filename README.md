@@ -435,11 +435,56 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
 	
 ## Create the HTML files
 
-At this point, you have created all of the Java files required for the AWS *Tracking Application*. Under the resource folder, create a template folder and then create the following HTML files:
+At this point, you have created all of the Java files required for the AWS *Greeting Application*. Under the resource folder, create a template folder and then create the following HTML files:
 
-+ **login.html**
-+ **index.html**
++ **greeting.html**
++ **result.html**
 
 The following illustration shows these files. 
 
 ![AWS Tracking Application](images/greet7.png)
+
+The **greeting.html** file is the form that lets a user submit data to the **GreetingController**. This form uses Spring Thymeleaf, which is Java template technology and can be used in Spring Boot applications. A benefit of using Spring Thymeleaf is you can submit form data as objects to Spring Controllers.  For more information, see https://www.thymeleaf.org/.
+
+The **result.html** file is used as a view returned by the controller after the user submits the data. In this example, it simply displays the Id value and the message. By the time the view is displayed, the data is already persisted in the DynamoDB table. 
+
+#### greeting HTML file
+
+The following HTML code represents the **greeting.html** file. 
+
+	<!DOCTYPE HTML>
+	<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+   	 <title>Getting Started: Spring Boot and the Enhanced DynamoDB Client</title>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    	<link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	</head>
+	<body>
+	
+	<h1>Submit to a DynamoDB Table</h1>
+	<p>You can submit data to a DynamoDB table by using the Enhanced Client</p>
+	<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+    	<div class="form-group">
+    	<p>Id: <input type="text"  class="form-control" th:field="*{id}" /></p>
+    <	/div>
+
+    	<div class="form-group">
+    	<p>Title: <input type="text" class="form-control" th:field="*{title}" /></p>
+    	</div>
+
+    	<div class="form-group">
+     	<p>Name: <input type="text" class="form-control" th:field="*{name}" /></p>
+    	</div>
+
+    	<div class="form-group">
+        <p>Body: <input type="text" class="form-control" th:field="*{body}"/></p>
+    	</div>
+
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+	</form>
+
+	</body>
+	</html>
+
+**Note** - Notice that the **th:field** values correspond to the data members in the **Greeting** class. 
