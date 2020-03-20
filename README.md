@@ -35,9 +35,6 @@ This document contains the following sections:
 + Add the Spring POM dependencies to your project	
 + Setup the Java packages in your project
 + Create the Java logic for the main Boot class
-+ Create the main controller class
-+ Create the Greeting class
-+ Create the Service class
 + Create the HTML files
 + Create a JAR file for the **Greetings** application 
 + Setup the DynamoDB table 
