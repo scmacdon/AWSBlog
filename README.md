@@ -513,3 +513,5 @@ The following HTML code represents the **result.html** file.
 2. In the **templates** folder, create the **greeting.html** file and paste the HTML code into this file. 
 3. In the **templates** folder, create the **result.html** file and paste the HTML code into this file.   
 
+
+
