@@ -584,6 +584,8 @@ To access the application, you need to use the following syntax in your browser.
 
 You need /greet at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browswer, you see the Form. 
 
-![AWS Blog Application](images/greet1.png)
+![AWS Blog Application](images/greet15.png)
+
+**NOTE**: The final task that you have to perform is to add the **bootstrap.min.css** file to the **resources\public\css** folder. This is the CSS file for the Spring Form. 
 
 
