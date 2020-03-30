@@ -1,6 +1,6 @@
 # Using the Amazon DynamoDB Enhanced Client within a Spring Boot application 
 
-You can develop a data submission application by using AWS Services (Amazon DynamoDB, Amazon Simple Notification Service, and AWS Elastic Beanstalk) and Spring Boot. This application uses the DynamoDB enhanced client (software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient) to submit data to a DynamoDB table. After the DynamoDB table is updated, a text message is sent to notify a user by using the Amazon Simple Notification Service. This application also uses Spring Boot APIs to build a model, views, and a controller.
+You can develop a data submission application by using AWS Services (Amazon DynamoDB, Amazon Simple Notification Service, and AWS Elastic Beanstalk) and Spring Boot. This application uses the DynamoDB enhanced client (**software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient**) to submit data to a DynamoDB table. After the DynamoDB table is updated, a text message is sent to notify a user by using the Amazon Simple Notification Service. This application also uses Spring Boot APIs to build a model, views, and a controller.
 
 The DynamoDB enhanced client lets you map your client-side classes to Amazon DynamoDB tables. To use the DynamoDB enhanced client, you define the relationship between items in a DynamoDB table and their corresponding object instances in your code. The DynamoDB enhanced client enables you to access your tables; perform various create, read, update, and delete (CRUD) operations; and execute queries.
 
