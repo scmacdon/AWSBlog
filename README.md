@@ -63,65 +63,64 @@ At this point, you have a new project named **Greetings**.
 
 ![AWS Tracking Application](images/greet4.png)
 
-Inside the **project** element in the **pom.xml** file, add the **spring-boot-starter-parent** dependency:
+Inside the **project** element in the **pom.xml** file, add the **spring-boot-starter-parent** dependency.
   
-     <parent>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-parent</artifactId>
-		  <version>2.2.5.RELEASE</version>
-		  <relativePath/> <!-- lookup parent from repository -->
-	  </parent>
+    	<parent>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-parent</artifactId>
+	  <version>2.2.5.RELEASE</version>
+	  <relativePath/> <!-- lookup parent from repository -->
+	</parent>
     
 Also, add the following Spring Boot **dependency** elements inside the **dependencies** element.
 
-    <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		 <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		  </dependency>
+    	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-test</artifactId>
+	  <scope>test</scope>
+	  <exclusions>
+		<exclusion>
+		<groupId>org.junit.vintage</groupId>
+		<artifactId>junit-vintage-engine</artifactId>
+		</exclusion>
+	 </exclusions>
+	</dependency>
       
-In addition, you need to add these AWS API dependencies. 
+In addition, add these AWS API dependencies. 
 
     <dependencyManagement>
-	    	<dependencies>
-			  <dependency>
-				  <groupId>software.amazon.awssdk</groupId>
-				  <artifactId>bom</artifactId>
-				  <version>2.10.54</version>
-				  <type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		  </dependencies>
-	  </dependencyManagement>
-    
-    		<dependency>
-		  <groupId>software.amazon.awssdk</groupId>
-		  <artifactId>dynamodb-enhanced</artifactId>
-		  <version>2.11.0-PREVIEW</version>
-		</dependency>
-		<dependency>
-		  <groupId>software.amazon.awssdk</groupId>
-		  <artifactId>dynamodb</artifactId>
-		  <version>2.5.10</version>
-		</dependency>
-		<dependency>
-		  <groupId>software.amazon.awssdk</groupId>
-		  <artifactId>sns</artifactId>
-		</dependency>
+	<dependencies>
+	  <dependency>
+	  <groupId>software.amazon.awssdk</groupId>
+	  <artifactId>bom</artifactId>
+	  <version>2.10.54</version>
+	  <type>pom</type>
+	  <scope>import</scope>
+	</dependency>
+	</dependencies>
+      </dependencyManagement>
+      <dependency>
+	<groupId>software.amazon.awssdk</groupId>
+	<artifactId>dynamodb-enhanced</artifactId>
+	<version>2.11.0-PREVIEW</version>
+	</dependency>
+	<dependency>
+	 <groupId>software.amazon.awssdk</groupId>
+	 <artifactId>dynamodb</artifactId>
+	 <version>2.5.10</version>
+	 </dependency>
+	<dependency>
+	 <groupId>software.amazon.awssdk</groupId>
+	 <artifactId>sns</artifactId>
+	</dependency>
     
 **Note**: Ensure that you are using Java 1.8 (shown below).
   
