@@ -596,7 +596,7 @@ Do not include the **CreateTable** class in this Spring project. Setup a separat
 
 Deploy the application to the AWS Elastic Beanstalk so it is available from a public URL. Sign in to the AWS Management Console, and then open the Elastic Beanstalk console. An application is the top-level container in Elastic Beanstalk that contains one or more application environments (for example prod, qa, and dev or prod-web, prod-worker, qa-web, qa-worker).
 
-If this is your first time accessing this service, you will see a *Welcome to AWS Elastic Beanstalk* page. Otherwise, you’ll land on the Elastic Beanstalk dashboard, which lists all of your applications.
+If this is your first time accessing this service, you see the *Welcome to AWS Elastic Beanstalk* page. Otherwise, you land on the Elastic Beanstalk dashboard, that lists all of your applications.
 
 ![AWS Tracking Application](images/greet9.png)
 
