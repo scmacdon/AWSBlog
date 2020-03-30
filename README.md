@@ -65,12 +65,12 @@ At this point, you have a new project named **Greetings**.
 
 Inside the **project** element in the **pom.xml** file, add the **spring-boot-starter-parent** dependency.
   
-    	<parent>
+     <parent>
 	  <groupId>org.springframework.boot</groupId>
 	  <artifactId>spring-boot-starter-parent</artifactId>
 	  <version>2.2.5.RELEASE</version>
 	  <relativePath/> <!-- lookup parent from repository -->
-	</parent>
+     </parent>
     
 Also, add the following Spring Boot **dependency** elements inside the **dependencies** element.
 
@@ -126,7 +126,7 @@ In addition, add these AWS API dependencies.
   
 At this point, the **pom.xml** file resembles the following file. 
 
-    	<?xml version="1.0" encoding="UTF-8"?>
+      <?xml version="1.0" encoding="UTF-8"?>
 	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
