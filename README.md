@@ -634,7 +634,7 @@ If this is your first time accessing this service, you see the *Welcome to AWS E
 
 To access the application, you need to use the following syntax in your browser.
 
-<URL>/greeting
+URL/greeting
 
 You need **/greeting** at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browser, you see the Form. 
 
