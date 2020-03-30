@@ -74,7 +74,7 @@ Inside the **project** element in the **pom.xml** file, add the **spring-boot-st
     
 Also, add the following Spring Boot **dependency** elements inside the **dependencies** element.
 
-    	<dependency>
+        <dependency>
 	  <groupId>org.springframework.boot</groupId>
 	  <artifactId>spring-boot-starter-thymeleaf</artifactId>
 	</dependency>
