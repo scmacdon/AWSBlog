@@ -211,7 +211,7 @@ Create a Java package in the **main/java** folder named **com.example.handlingfo
 
 The following list describes the Java files in this package.
 
-+ **DynamoDBEnhanced** - A Java class that injects data into an Amazon DynamoDB table by using the DynamoDB enchanced client API. 
++ **DynamoDBEnhanced** - A Java class that injects data into an Amazon DynamoDB table by using the DynamoDB enhanced client API. 
 + **PublishTextSMS** - A Java class that sends a text message. 
 + **Greeting** - A Java class that represents the model for the application.
 + **GreetingController** - A Java class that represents the controller for this application. 
