@@ -207,7 +207,7 @@ At this point, the **pom.xml** file resembles the following file.
 
 Create a Java package in the **main/java** folder named **com.example.handlingformsubmission**. The Java files go into this package.
 
-![AWS Tracking Application](images/greet6.png)
+![AWS Tracking Application](images/project.png)
 
 The following list describes the Java files in this package.
 
