@@ -14,13 +14,13 @@ When the Submit button is clicked, the data is submitted to a Spring Controller 
 
 ![AWS Blog Application](images/greet2_1.png)
 
-After the table is updated with a new item, a text message is sent to notify a mobile user, as shown in this illustration.
+After the table is updated with a new item, a text message is sent to notify a mobile user.
 
 ![AWS Blog Application](images/phone2.png)
 
 This development document guides you through creating an AWS application that uses Spring Boot. Once the application is developed, this document teaches you how to deploy it to the AWS Elastic Beanstalk.
 
-To follow along with the document, you require the following setup on your development environment.
+To follow along with the document, you require the following items in your development environment.
 
 + An AWS Account.
 + A Java IDE (for this example, IntelliJ is used).
@@ -29,11 +29,11 @@ To follow along with the document, you require the following setup on your devel
 The following illustration shows the project that is created.
 ![AWS Blog Application](images/greet3.png)
 
-**Cost to Complete**: The AWS Services included in this document are included in the AWS Free Tier.
+**Cost to Complete**: The AWS Services included in this document are part of the AWS Free Tier.
 
 **Note**: Please be sure to terminate all of the resources created during this document to ensure that you are no longer charged.
 
-This document contains the following sections: 
+This document contains the following sections. 
 
 + Create an IntelliJ project named **Greetings**
 + Add the Spring POM dependencies to your project	
@@ -44,7 +44,6 @@ This document contains the following sections:
 + Setup the DynamoDB table 
 + Deploy the  **Greetings** application to the AWS Elastic Beanstalk
 
-
 ## Create an IntelliJ project named Greetings
 The first step is to create a new IntelliJ project. 
 
@@ -54,7 +53,7 @@ The first step is to create a new IntelliJ project.
 2. In the **New Project** dialog, select **Maven**. 
 3. Click **Next**.
 4. In the **GroupId** field, enter **spring-aws**. 
-5. In the **ArtifactId** field, enter **Greetings**. 
+5. In the **ArtifactId** field, enter **greetings**. 
 6. Click **Next**.
 7. Click **Finish**. 
 
@@ -132,10 +131,9 @@ At this point, the **pom.xml** file resembles the following file.
 	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.example</groupId>
-	<artifactId>blog</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>blog</name>
+	<groupId>spring-aws</groupId>
+    	<artifactId>greetings</artifactId>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 	<parent>
@@ -224,11 +222,11 @@ The following list describes the Java files in this package.
 
 ## Create the Java logic for the application
 
-Create Spring application logic that is required for this application to persist data into an Amazon DynamoDB table. You need to create the main Spring Boot Java class, the Controller class, the Model class, and the AWS service classes. 
+You need to create the main Spring Boot Java class, the Controller class, the Model class, and the AWS service classes. 
 
 ### Create the main Spring Boot Java class
 
-In the **com.example** package, create a new Java class named **GreetingApplication**. Add the following Java code to this class. 
+In the **com.example** package, create a Java class named **GreetingApplication**. Add the following Java code to this class. 
 
 	package com.example;
 
@@ -245,7 +243,7 @@ In the **com.example** package, create a new Java class named **GreetingApplicat
 
 ### Create the GreetingController class
 
-In the **com.example.handlingformsubmission** package, create the **GreetingController** class. This class functions as the controller for the Spring Boot application. That is, it handles HTTP requests and returns a view. In this example, notice the **@Autowired** annotation. This creates a managed Spring bean. The following Java code represents this class. 
+In the **com.example.handlingformsubmission** package, create the **GreetingController** class. This class functions as the controller for the Spring Boot application. That is, it handles HTTP requests and returns a view. In this example, notice the **@Autowired** annotation that creates a managed Spring bean. The following Java code represents this class. 
 
 	package com.example.handlingformsubmission;
 
@@ -326,7 +324,7 @@ In the **com.example.handlingformsubmission** package, create the **Greeting** c
 	
 ### Create the DynamoDBEnhanced class
 
-In the **com.example.handlingformsubmission** package, create the **DynamoDBEnhanced** class. This class uses the DynamoDB API that injects data into a DynamoDB table by using the Enhanced Client API. To map data to the table, you use a **TableSchema** object (as shown in the following example). In this example, notice the **GreetingItems** class where each data member is mapped to a column in the DynamoDB table. 
+In the **com.example.handlingformsubmission** package, create the **DynamoDBEnhanced** class. This class uses the DynamoDB API that injects data into a DynamoDB table by using the enhanced client API. To map data to the table, you use a **TableSchema** object (as shown in the following example). In this example, notice the **GreetingItems** class where each data member is mapped to a column in the DynamoDB table. 
 
 To inject data into a DynamoDB table, you create a **DynamoDbTable** object by invoking the **DynamoDbEnhancedClient** object's **table** method and passing the table name (in this example, **Greeting**) and the **TableSchema** object. Next, create a **GreetingItems** object and populate it with data values that you want to store (in this example, the data items are submitted from the Spring form). 
 
@@ -457,7 +455,7 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
 
 ### Create the PublishTextSMS class
 
-Create a new class named **PublishTextSMS** that sends a text message when a new item is added to the DynamoDB table. The following Java code represents this class. 
+Create a class named **PublishTextSMS** that sends a text message when a new item is added to the DynamoDB table. The following Java code represents this class. 
 
 	package com.example.handlingformsubmission;
 
@@ -500,7 +498,7 @@ Create a new class named **PublishTextSMS** that sends a text message when a new
 	
 ## Create the HTML files
 
-At this point, you have created all of the Java files required for the AWS application. Under the resource folder, create a **templates** folder and then create the following HTML files:
+Under the resource folder, create a **templates** folder and then create the following HTML files.
 
 + **greeting.html**
 + **result.html**
@@ -580,7 +578,7 @@ The following HTML code represents the **result.html** file.
 
 ## Create a JAR file for the Greetings application
 
-You can package up the project into a JAR file that you can deploy to Amazon Elastic Beanstalk by using the following Maven command.
+Package up the project into a JAR file that you can deploy to Amazon Elastic Beanstalk by using the following Maven command.
 
 	mvn package
 
@@ -608,7 +606,7 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 
 1. Open the Elastic Beanstalk console at https://console.aws.amazon.com/elasticbeanstalk/home. 
 2. Choose **Create New Application**. This opens a wizard that creates your application and launches an appropriate environment.
-3. In the *Create New Application* dialog, enter the following values: 
+3. In the *Create New Application* dialog, enter the following values. 
 + **Application Name** - Greeting
 + **Description** - A description for the application. 
 
@@ -622,7 +620,7 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 
 ![AWS Tracking Application](images/greet11.png)
 
-9. Once done, you will see the application state the Health is Ok.  
+9. Once done, you will see the application state the Health is **Ok**.  
 
 ![AWS Tracking Application](images/greet13.png)
 
@@ -632,7 +630,7 @@ If this is your first time accessing this service, you will see a *Welcome to AW
 
 **NOTE**: If you do not know how to set variables, see https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-cfg-softwaresettings.html.
 
-13. Once the variables are configured, you will see the URL that application can be access at, as shown in this illustation. 
+13. Once the variables are configured, you'll see the URL that application can be access at. 
 
 ![AWS Tracking Application](images/greet14.png)
 
@@ -640,7 +638,7 @@ To access the application, you need to use the following syntax in your browser.
 
 <URL>/greeting
 
-You need /greet at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browswer, you see the Form. 
+You need **/greeting** at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browswer, you see the Form. 
 
 ![AWS Blog Application](images/greet15.png)
 
