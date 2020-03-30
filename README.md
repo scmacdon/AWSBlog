@@ -16,7 +16,7 @@ When the Submit button is clicked, the data is submitted to a Spring Controller 
 
 After the table is updated with a new item, a text message is sent to notify a mobile user, as shown in this illustration.
 
-
+![AWS Blog Application](images/phone.png)
 
 This development document guides you through creating an AWS application that uses Spring Boot. Once the application is developed, this document teaches you how to deploy it to the AWS Elastic Beanstalk.
 
