@@ -60,7 +60,7 @@ The first step is to create a new IntelliJ project.
 
 ## Add the Spring POM dependencies to your project
 
-At this point, you have a new project named **Greetings**, as shown in this illustration. 
+At this point, you have a new project named **Greetings**. 
 
 ![AWS Tracking Application](images/greet4.png)
 
@@ -124,7 +124,7 @@ In addition, you need to add these AWS API dependencies.
 		  <artifactId>sns</artifactId>
 		</dependency>
     
-**Note** - Ensure that you are using Java 1.8 (shown below).
+**Note**: Ensure that you are using Java 1.8 (shown below).
   
 At this point, the **pom.xml** file resembles the following file. 
 
@@ -205,7 +205,7 @@ At this point, the **pom.xml** file resembles the following file.
 	 </build>
 	</project>
 
-**Note**: Make sure that you have the <packaging> element in your POM file. This is required to build a JAR file (which is covered later in this document).  
+**Note**: Make sure that you have the **packaging** element in your POM file. This is required to build a JAR file (which is covered later in this document).  
     
 ## Setup the Java packages in your project
 
@@ -215,15 +215,16 @@ Create a Java package in the **main/java** folder named **com.example.handlingfo
 
 The following list describes the Java files in this package.
 
-+ **DynamoDBEnhanced** - contains Java application logic that injects data into a Amazon DynamoDB table using the Enchanced Client. 
-+ **Greeting** - A Java class that container setter and getter methods and represents the model for the application.
++ **DynamoDBEnhanced** - A Java class that injects data into an Amazon DynamoDB table by using the DynamoDB enchanced client API. 
++ **PublishTextSMS** - A Java class that sends a text message. 
++ **Greeting** - A Java class that represents the model for the application.
 + **GreetingController** - A Java class that repeesents the controller for this application. 
 
 **Note**: The **GreetingApplication** class must be placed into the **com.example** package. 
 
 ## Create the Java logic for the application
 
-Create Spring application logic that is required for this application to persist data into an Amazon DynamoDB table. You need to create the main Spring Boot Java class, the Controller class, the model class, and the DynamoDB service class. 
+Create Spring application logic that is required for this application to persist data into an Amazon DynamoDB table. You need to create the main Spring Boot Java class, the Controller class, the Model class, and the AWS service classes. 
 
 ### Create the main Spring Boot Java class
 
@@ -325,11 +326,11 @@ In the **com.example.handlingformsubmission** package, create the **Greeting** c
 	
 ### Create the DynamoDBEnhanced class
 
-In the **com.example.handlingformsubmission** package, create the **DynamoDBEnhanced** class. This class uses the DynamoDB API that injects data into a DynamoDB table by using the Enhanced client. To map data to the table, you use a **TableSchema** object (as shown in the following example). In this example, notice the **GreetingItems** class where each data member is mapped to a column in a DynamoDB table. 
+In the **com.example.handlingformsubmission** package, create the **DynamoDBEnhanced** class. This class uses the DynamoDB API that injects data into a DynamoDB table by using the Enhanced Client API. To map data to the table, you use a **TableSchema** object (as shown in the following example). In this example, notice the **GreetingItems** class where each data member is mapped to a column in the DynamoDB table. 
 
 To inject data into a DynamoDB table, you create a **DynamoDbTable** object by invoking the **DynamoDbEnhancedClient** object's **table** method and passing the table name (in this example, **Greeting**) and the **TableSchema** object. Next, create a **GreetingItems** object and populate it with data values that you want to store (in this example, the data items are submitted from the Spring form). 
 
-Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object for the **items** method. Finally invoke the the **DynamoDbEnhancedClient** object's **putItem** method and pass the **PutItemEnhancedRequest** object. The following Java code represents the **DynamoDBEnhanced** class.
+Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object for the **items** method. Finally invoke the **DynamoDbEnhancedClient** object's **putItem** method and pass the **PutItemEnhancedRequest** object. The following Java code represents the **DynamoDBEnhanced** class.
 
 	package com.example.handlingformsubmission;
 
@@ -453,10 +454,53 @@ Create a **PutItemEnhancedRequest** object and pass the **GreetingItems** object
 	}
 	
 **NOTE**: Notice that the **EnvironmentVariableCredentialsProvider** is used to create a **DynamoDbClient**. The reason is because this application is going to be deployed to the AWS Elastic Beanstalk. You can setup environment variables on the AWS Elastic Beanstalk so that the  **DynamoDbClient** is successfully created. 	
+
+### Create the PublishTextSMS class
+
+Create a new class named **PublishTextSMS** that sends a text message when a new item is added to the DynamoDB table. The following Java code represents this class. 
+
+	package com.example.handlingformsubmission;
+
+	import software.amazon.awssdk.regions.Region;
+	import software.amazon.awssdk.services.sns.SnsClient;
+	import software.amazon.awssdk.services.sns.model.PublishRequest;
+	import software.amazon.awssdk.services.sns.model.PublishResponse;
+	import software.amazon.awssdk.services.sns.model.SnsException;
+	import org.springframework.stereotype.Component;
+
+	@Component("PublishTextSMS")
+	public class PublishTextSMS {
+
+    	public void sendMessage(String id) {
+
+	Region region = Region.US_EAST_1;
+        SnsClient snsClient = SnsClient.builder()
+                .region(region)
+                .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
+                .build();
+       String message = "A new item with ID value "+ id +" was added to the DynamoDB table";
+        String phoneNumber="ENTER MOBILE PHONE NUMBER"; //Relace with a mobile phone number
+
+        try {
+            PublishRequest request = PublishRequest.builder()
+                    .message(message)
+                    .phoneNumber(phoneNumber)
+                    .build();
+
+            PublishResponse result = snsClient.publish(request);
+
+        } catch (SnsException e) {
+
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+       }
+      }
+
 	
 ## Create the HTML files
 
-At this point, you have created all of the Java files required for the AWS *Greeting Application*. Under the resource folder, create a **templates** folder and then create the following HTML files:
+At this point, you have created all of the Java files required for the AWS application. Under the resource folder, create a **templates** folder and then create the following HTML files:
 
 + **greeting.html**
 + **result.html**
@@ -467,7 +511,7 @@ The following illustration shows these files.
 
 The **greeting.html** file is the form that lets a user submit data to the **GreetingController**. This form uses Spring Thymeleaf, which is Java template technology and can be used in Spring Boot applications. A benefit of using Spring Thymeleaf is you can submit form data as objects to Spring Controllers.  For more information, see https://www.thymeleaf.org/.
 
-The **result.html** file is used as a view returned by the controller after the user submits the data. In this example, it simply displays the Id value and the message. By the time the view is displayed, the data is already persisted in the DynamoDB table. 
+The **result.html** file is used as a view returned by the controller after the user submits the data. In this example, it displays the **Id** value and the message. By the time the view is displayed, the data is already persisted in the DynamoDB table. 
 
 #### Greeting HTML file
 
@@ -508,7 +552,7 @@ The following HTML code represents the **greeting.html** file.
 	</body>
 	</html>
 
-**Note** - Notice that the **th:field** values correspond to the data members in the **Greeting** class. 
+**Note**: Notice that the **th:field** values correspond to the data members in the **Greeting** class. 
 
 #### Result HTML file
 
@@ -536,7 +580,7 @@ The following HTML code represents the **result.html** file.
 
 ## Create a JAR file for the Greetings application
 
-You can package up the project into a JAR file that you can deploy to Amazon Elastic Beanstalk. To package up the project, you can use the following Maven command.
+You can package up the project into a JAR file that you can deploy to Amazon Elastic Beanstalk by using the following Maven command.
 
 	mvn package
 
@@ -550,11 +594,11 @@ You can use the DynamoDB Java API to create a table. The code to create a table 
 
 https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/dynamodb/src/main/java/com/example/dynamodb/CreateTable.java
 
-Do not include the **CreateTable** class in this Spring project. You can setup a separate Java project to run this code. Ensure that you name the table **Greeting** when you execute this Java code (this is referenced in the **DynamoDBEnhanced** class). 
+Do not include the **CreateTable** class in this Spring project. Setup a separate Java project to run this code. Ensure that you name the table **Greeting** when you execute this Java code (this is referenced in the **DynamoDBEnhanced** class). 
 
 ## Deploy the application to the AWS Elastic Beanstalk
 
-You can deploy the application to the AWS Elastic Beanstalk so it is available from a specified URL. Sign in to the AWS Management Console, and then open the Elastic Beanstalk console. An application is the top-level container in Elastic Beanstalk that contains one or more application environments (for example prod, qa, and dev or prod-web, prod-worker, qa-web, qa-worker).
+Deploy the application to the AWS Elastic Beanstalk so it is available from a public URL. Sign in to the AWS Management Console, and then open the Elastic Beanstalk console. An application is the top-level container in Elastic Beanstalk that contains one or more application environments (for example prod, qa, and dev or prod-web, prod-worker, qa-web, qa-worker).
 
 If this is your first time accessing this service, you will see a *Welcome to AWS Elastic Beanstalk* page. Otherwise, you’ll land on the Elastic Beanstalk dashboard, which lists all of your applications.
 
