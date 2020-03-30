@@ -636,7 +636,7 @@ To access the application, you need to use the following syntax in your browser.
 
 <URL>/greeting
 
-You need **/greeting** at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browswer, you see the Form. 
+You need **/greeting** at the end of the URL so that a request is made to the /greeting controller in the **GreetingController** class. When you enter the full URL (including /greeting) into a browser, you see the Form. 
 
 ![AWS Blog Application](images/greet15.png)
 
