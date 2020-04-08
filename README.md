@@ -1,4 +1,4 @@
-# Using Amazon DynamoDB Object Mapping within a Spring Boot application 
+# Using the Amazon DynamoDB Enhanced Client within a Spring Boot application 
 
 You can develop a data submission application by using AWS Services (Amazon DynamoDB, Amazon Simple Notification Service, and AWS Elastic Beanstalk) and Spring Boot. This application uses DynamoDB object mapping functionality (**software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient**) to store data within a DynamoDB table. After the DynamoDB table is updated, a text message is sent to notify a user by using the Amazon Simple Notification Service. This application also uses Spring Boot APIs to build a model, views, and a controller.
 
