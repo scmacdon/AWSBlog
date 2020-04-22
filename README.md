@@ -1,6 +1,6 @@
 # Creating your first AWS Java Web Application
 
-You can develop a data submission application by using Amazon DynamoDB, Amazon Simple Notification Service (Amazon SNS), AWS Elastic Beanstalk, and Spring Boot. This application uses the **software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient** to store data within a DynamoDB table. After the DynamoDB table is updated, the application uses Amazon SNS to send a text message to notify a user. This application also uses Spring Boot APIs to build a model, views, and a controller.
+You can develop an AWS Web Application that lets users submit data to an Amazon DynamoDB table. In addition to using Amazon DynamoDB, this web application also uses Amazon Simple Notification Service (Amazon SNS) and AWS Elastic Beanstalk. This application uses the **software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient** to store data within a DynamoDB table. After the DynamoDB table is updated, the application uses Amazon SNS to send a text message to notify a user. This application also uses Spring Boot APIs to build a model, views, and a controller.
 
 The DynamoDB enhanced client lets you map your client-side classes to Amazon DynamoDB tables. To use the DynamoDB enhanced client, you define the relationship between items in a DynamoDB table and their corresponding object instances in your code. The DynamoDB enhanced client enables you to do the following:
 
@@ -8,7 +8,7 @@ The DynamoDB enhanced client lets you map your client-side classes to Amazon Dyn
 * Perform various create, read, update, and delete (CRUD) operations
 * Execute queries
 
-**Note:** For more information about the DynamoDB enhanced client, see <X-REF TO Java 2 DEV Guide>. 
+**Note:** For more information about the DynamoDB enhanced client, see https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/examples-dynamodb-enhanced.html. 
 
 The following shows the application you'll create.
 
