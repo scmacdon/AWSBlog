@@ -462,6 +462,7 @@ Create a class named **PublishTextSMS** that sends a text message when a new ite
 	package com.example.handlingformsubmission;
 
 	import software.amazon.awssdk.regions.Region;
+	import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 	import software.amazon.awssdk.services.sns.SnsClient;
 	import software.amazon.awssdk.services.sns.model.PublishRequest;
 	import software.amazon.awssdk.services.sns.model.PublishResponse;
@@ -479,7 +480,7 @@ Create a class named **PublishTextSMS** that sends a text message when a new ite
                 .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
                 .build();
        String message = "A new item with ID value "+ id +" was added to the DynamoDB table";
-        String phoneNumber="ENTER MOBILE PHONE NUMBER"; //Relace with a mobile phone number
+        String phoneNumber="ENTER MOBILE PHONE NUMBER"; //Replace with a mobile phone number
 
         try {
             PublishRequest request = PublishRequest.builder()
