@@ -12,7 +12,7 @@ The DynamoDB enhanced client lets you map your client-side classes to Amazon Dyn
 
 The following shows the application you'll create.
 
-![AWS Blog Application](images/greet1.png)
+![AWS Blog Application](images/firstAWS1.png)
 
 When you choose **Submit**, the data is submitted to a Spring Controller and persisted into a DynamoDB table named **Greeting**. Then a text message is sent to a user. The following is the **Greeting** table.
 
