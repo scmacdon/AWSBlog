@@ -22,7 +22,7 @@ After the table is updated with a new item, a text message is sent to notify a m
 
 ![AWS Blog Application](images/phone2.png)
 
-This blog post guides you through creating an AWS application that uses Spring Boot. After you develop the application, you'll learn how to deploy it to Elastic Beanstalk.
+This development article guides you through creating an AWS application that uses Spring Boot. After you develop the application, you'll learn how to deploy it to Elastic Beanstalk.
 
 ## Prerequisites
 
@@ -128,7 +128,7 @@ Also add these AWS API dependencies.
     
 **Note:** Ensure that you're using Java 1.8 (shown below).
   
-At this point, the **pom.xml** file resembles the following file. 
+At this point, ensure that the **pom.xml** file resembles the following file. 
 
       <?xml version="1.0" encoding="UTF-8"?>
 	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -145,7 +145,6 @@ At this point, the **pom.xml** file resembles the following file.
 	 <version>2.2.5.RELEASE</version>
 	 <relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
 	<properties>
 	 <java.version>1.8</java.version>
 	</properties>
@@ -205,7 +204,7 @@ At this point, the **pom.xml** file resembles the following file.
      </build>
     </project>
 
-**Note:** Be sure that you have the **packaging** element in your POM file. This is required to build a JAR file (covered later in this blog post).  
+**Note:** Be sure that you have the **packaging** element in your POM file. This is required to build a JAR file (covered later in this document). 
     
 ## Set up the Java packages in your project
 
@@ -256,31 +255,37 @@ In the **com.example.handlingformsubmission** package, create the **GreetingCont
 	import org.springframework.web.bind.annotation.ModelAttribute;
 	import org.springframework.web.bind.annotation.PostMapping;
 
-    	@Controller
-    	public class GreetingController {
+	@Controller
+	public class GreetingController {
 
     	@Autowired
     	private DynamoDBEnhanced dde;
 
+    	@Autowired
+    	private PublishTextSMS msg;
+
     	@GetMapping("/greeting")
     	public String greetingForm(Model model) {
-         model.addAttribute("greeting", new Greeting());
-         return "greeting";
+          model.addAttribute("greeting", new Greeting());
+          return "greeting";
     	}
 
     	@PostMapping("/greeting")
     	public String greetingSubmit(@ModelAttribute Greeting greeting) {
 
-        // Persist Greeting into a DynamoDB table using the enhanced client
-        dde.injectDynamoItem(greeting);
+          //Persist submitted data into a DynamoDB table using the Enhanced Client
+          dde.injectDynamoItem(greeting);
 
-        return "result";
-    	 }
-	}
+          // Send a mobile notification
+          msg.sendMessage(greeting.getId());
+
+          return "result";
+    	}
+     }
 	
 ### Create the Greeting class
 
-In the **com.example.handlingformsubmission** package, create the **Greeting** class. This class functions as the model for the Spring Boot application. The following Java code represents this class.  
+In the **com.example.handlingformsubmission** package, create the **Greeting** class. This class represents the model for the Spring Boot application. The following Java code represents this class.  
 
 	package com.example.handlingformsubmission;
 
@@ -480,7 +485,7 @@ Create a class named **PublishTextSMS** that sends a text message when a new ite
                 .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
                 .build();
        String message = "A new item with ID value "+ id +" was added to the DynamoDB table";
-        String phoneNumber="ENTER MOBILE PHONE NUMBER"; //Replace with a mobile phone number
+        String phoneNumber="<ENTER MOBILE PHONE NUMBER>"; //Replace with a mobile phone number
 
         try {
             PublishRequest request = PublishRequest.builder()
@@ -498,6 +503,7 @@ Create a class named **PublishTextSMS** that sends a text message when a new ite
        }
       }
 
+**Note**: Besude to specify a valid mobile number for the **phoneNumber** variable. 
 	
 ## Create the HTML files
 
